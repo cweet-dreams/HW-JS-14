@@ -99,12 +99,16 @@ function onChangeCategory (e) {
             ui.clearContainer();
             // перебираем новости из поля articles в объекте response
             response.articles.forEach(news => ui.addNews(news));
+            if(!response){
+                ui.showError(`"Новости по ${selectCategory.value} по ${select.value} не найдены`);
+            }
         } else {
             // Выводим ошибку
             ui.showError(err);
         }
+
     });
-    !selectCategory ? ui.showError("Новости по категории такой то по стране такойто не найдены")
+
 
 }
 
